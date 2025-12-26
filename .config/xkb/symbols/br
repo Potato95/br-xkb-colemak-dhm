@@ -45,7 +45,17 @@ xkb_symbols "pt-br_colemak-dhm" {
     key <AB10> { [      period,     greater,   periodcentered,     division ] }; // ; : ˙ ̣̣
     key <AB11> { [    ccedilla,    Ccedilla,       dead_acute, dead_doubleacute ] }; // /?°¿
 
-    key <CAPS> { [ ISO_Level5_Shift, Caps_Lock, Caps_Lock, Caps_Lock ] }; // Ext Key
+    key <CAPS> { symbols[Group1] = [ ISO_Level5_Shift, Caps_Lock, Caps_Lock, Caps_Lock ] ,
+                 actions[Group1] = [ NoAction()      , LockMods(modifiers=Lock) ] ,
+                 repeat=yes }; // Ext Key
     modifier_map Mod3 { ISO_Level5_Shift };
 
 };
+
+//  key <AC11> { symbols[Group1]=[Any       , Any       , Any       , Any       ,   // ' " O
+//                    BackSpace                   , BackSpace                     ,   // Back
+//                    KP_Enter                    , KP_Enter                      ] , // KP_Enter
+//                 actions[Group1]=[NoAction(), NoAction(), NoAction(), NoAction(),
+//                    Redirect(key=<BKSP>,clearmods=LevelFive), Redirect(key=<BKSP>,clearmods=LevelFive),     // <BKSP>
+//                   NoAction()                  , NoAction()                    ] ,
+//                 repeat=yes     };  // ' "
